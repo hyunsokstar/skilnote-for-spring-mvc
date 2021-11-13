@@ -1565,9 +1565,9 @@ def myfunc():
     print("myfunc 실행")
 
 
-# 2244
-class MyShortcutListByCategory(ListView):
 
+# skilnote2 Note1 List 
+class MyShortcutListByCategory(ListView):
     def get_template_names(self):
         return ['skilnote2/skil_note2_list.html']
 

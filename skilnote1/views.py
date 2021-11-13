@@ -1594,7 +1594,7 @@ def myfunc():
     print("myfunc 실행")
 
 
-# 2244
+# skilnote2 Note1 List
 class MyShortcutListByCategory(ListView):
 
     def get_queryset(self):

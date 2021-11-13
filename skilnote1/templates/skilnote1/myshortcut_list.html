@@ -45,7 +45,7 @@ img.Image { max-width: 100%; display: block; }
 
 {%block content4 %}
 <br>
-<h2 class="">skilnote1</h2>
+<h2 class="">MyNote1</h2>
 <table class="table table-bordered">
 	<tr>
 		<td width="">
@@ -894,7 +894,7 @@ function copy_for_file_name(id){
         how: 'append'
     });
 
-	if(copyText.value.indexOf("http://") != -1) {
+	if(copyText.value.indexOf("http://") != -1 || copyText.value.indexOf("https://") != -1) {
 		var r = confirm("주소로 새창을 띄우시겠습니까?");
 		if (r == true) {
 			console.log("새탭 열기")
