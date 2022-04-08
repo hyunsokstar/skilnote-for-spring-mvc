@@ -355,7 +355,7 @@ img.Image { max-width: 100%; display: block; }
 
 <div class="sideicon_for_scroll">
 
-	<button type="button" name="button" class="before_btn btn btn-outline-dark btn-sm" onclick="window.location.href = '{% url 'wm:my_shortcut_list' %}'">L</button><br>
+	<button type="button" name="button" class="before_btn btn btn-outline-dark btn-sm" onclick="window.location.href = '{% url ':my_shortcut_list' %}'">L</button><br>
 	<a href="" class="btn btn-outline-primary btn-sm" id="insert_first_for_skill_note_btn"> 첫글</a><br>
 	<a href="" class="btn btn-outline-primary btn-sm" id="shortcut_delete_button "> 삭제 </a> <br>
 	<a href="" class="btn btn-outline-primary btn-sm" id="ca_plus_1_btn" data-category={{cateogory}}>
@@ -560,7 +560,7 @@ img.Image { max-width: 100%; display: block; }
 				<input type="radio" class="search" id="content_title_alluser" name='foo'>제목, 내용(all user)
 				<input type="radio" class="search" id="title_alluser" name='foo'>제목(all user)
 				<br>
-				<div id="wm_list_area_for_popup"></div>
+				<div id="_list_area_for_popup"></div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -939,8 +939,8 @@ $('body').on('click', '.file_history_button', function (e) {
 			},
 		success: function (result) {
 			// alert("result: ", result)
-			$("#wm_list_area_for_popup").html("")
-			$("#wm_list_area_for_popup").append(result)
+			$("#_list_area_for_popup").html("")
+			$("#_list_area_for_popup").append(result)
 			window.history.pushState("", "", '/skilnote4/myshortcut/')
 		}
 	});
@@ -1949,8 +1949,8 @@ $('body').on('click', '.skill_search_button', function (e) {
 			window.history.pushState("", "", '/skilnote4/myshortcut/')
 			// alert("success");
 			// alert("result: "+ result)
-			$("#wm_list_area_for_popup").html("")
-			$("#wm_list_area_for_popup").append(result)
+			$("#_list_area_for_popup").html("")
+			$("#_list_area_for_popup").append(result)
 		}
 	});
 });

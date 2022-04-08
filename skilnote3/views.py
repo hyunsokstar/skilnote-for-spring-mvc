@@ -1191,7 +1191,7 @@ def create_textarea_first(request):
         'shortcut_id':skilnote3.id,
         'shortcut_title':skilnote3.title,
         'shortcut_content2':skilnote3.content2,
-        # 'author':wm.author.username,
+        # 'author':.author.username,
     })
 
 # summer note 첫번째에 추가 하기 2244

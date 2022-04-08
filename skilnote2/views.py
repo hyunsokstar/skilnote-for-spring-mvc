@@ -141,7 +141,7 @@ def insert_temp_skill_note_for_textarea(request):
     ca = CategoryForSkilNote2.objects.get(id=category_id)
     title = request.POST['title']
 
-    wm = TempMyShortCutForSkilNote2.objects.create(
+    skilnote1 = TempMyShortCutForSkilNote2.objects.create(
         author = request.user,
         title=title,
         type= ty,
@@ -149,13 +149,13 @@ def insert_temp_skill_note_for_textarea(request):
         content2 = ""
     )
 
-    print("wm : ", wm)
+    print("skilnote1 : ", skilnote1)
 
     return JsonResponse({
         'message': 'textarea 박스 추가 성공',
-        'shortcut_id':wm.id,
-        'shortcut_title':wm.title,
-        'shortcut_content2':wm.content2,
+        'shortcut_id':skilnote1.id,
+        'shortcut_title':skilnote1.title,
+        'shortcut_content2':skilnote1.content2,
     })
 
 def delete_guest_book_list(request,id):
@@ -434,14 +434,14 @@ def copy_to_me_from_user_id(request):
     user_id = User.objects.get(username=author).id
     print("user_id : " , user_id)
 
-    wm_list_for_copy = MyShortCutForSkilNote2.objects.filter(Q(author=user_id))
-    print("wm_list_for_copy : " , wm_list_for_copy);
+    skilnote1_list_for_copy = MyShortCutForSkilNote2.objects.filter(Q(author=user_id))
+    print("skilnote1_list_for_copy : " , skilnote1_list_for_copy);
     MyShortCutForSkilNote2.objects.filter(Q(author=request.user)).delete()
 
-    comment_wm_list_for_copy = CommentForShortCutForSkilNote2.objects.filter(Q(author=user_id))
+    comment_skilnote1_list_for_copy = CommentForShortCutForSkilNote2.objects.filter(Q(author=user_id))
 
 
-    for p in wm_list_for_copy:
+    for p in skilnote1_list_for_copy:
         myshortcut = MyShortCutForSkilNote2.objects.create(
             author = request.user,
             title = p.title,
@@ -454,13 +454,13 @@ def copy_to_me_from_user_id(request):
             created = p.created,
         )
         # print("myshortcut : " , myshortcut.id)
-        for comment in comment_wm_list_for_copy:
+        for comment in comment_skilnote1_list_for_copy:
             # print("comment.id : ", comment.id)
             # print("myshortcut.id : ", myshortcut.id )
             if comment.shortcut.id == p.id:
                 print("댓글 생성 시도 확인")
-                wm = MyShortCutForSkilNote2.objects.filter(id = comment.id)
-                wm_comment = CommentForShortCutForSkilNote2ForSkilNote2.objects.create(
+                skilnote1 = MyShortCutForSkilNote2.objects.filter(id = comment.id)
+                skilnote1_comment = CommentForShortCutForSkilNote2ForSkilNote2.objects.create(
                     author = request.user,
                     title=comment.title,
                     shortcut = myshortcut,
@@ -688,19 +688,19 @@ def insert_temp_skill_note_using_input_for_backend(request):
     ca = CategoryForSkilNote2.objects.get(id=category_id)
     title = request.POST['title']
 
-    wm = TempMyShortCutForBackEndForSkilNote2.objects.create(
+    skilnote1 = TempMyShortCutForBackEndForSkilNote2.objects.create(
         author = request.user,
         title=title,
         type= ty,
         category = ca,
         content1 = ""
     )
-    print("wm : ", wm)
+    print("skilnote1 : ", skilnote1)
     return JsonResponse({
         'message': '인풋 박스 추가 성공',
-        'shortcut_id':wm.id,
-        'shortcut_title':wm.title,
-        'shortcut_content':wm.content1,
+        'shortcut_id':skilnote1.id,
+        'shortcut_title':skilnote1.title,
+        'shortcut_content':skilnote1.content1,
     })
 
 
@@ -711,7 +711,7 @@ def insert_temp_skill_note_using_textarea_for_backend(request):
     ca = CategoryForSkilNote2.objects.get(id=category_id)
     title = request.POST['title']
 
-    wm = TempMyShortCutForBackEndForSkilNote2.objects.create(
+    skilnote1 = TempMyShortCutForBackEndForSkilNote2.objects.create(
         author = request.user,
         title=title,
         type= ty,
@@ -719,13 +719,13 @@ def insert_temp_skill_note_using_textarea_for_backend(request):
         content2 = ""
     )
 
-    print("wm : ", wm)
+    print("skilnote1 : ", skilnote1)
 
     return JsonResponse({
         'message': 'textarea 박스 추가 성공',
-        'shortcut_id':wm.id,
-        'shortcut_title':wm.title,
-        'shortcut_content2':wm.content2,
+        'shortcut_id':skilnote1.id,
+        'shortcut_title':skilnote1.title,
+        'shortcut_content2':skilnote1.content2,
     })
 
 
@@ -796,19 +796,19 @@ def insert_temp_skill_note_for_input(request):
     ca = CategoryForSkilNote2.objects.get(id=category_id)
     title = request.POST['title']
 
-    wm = TempMyShortCutForSkilNote2.objects.create(
+    skilnote1 = TempMyShortCutForSkilNote2.objects.create(
         author = request.user,
         title=title,
         type= ty,
         category = ca,
         content1 = ""
     )
-    print("wm : ", wm)
+    print("skilnote1 : ", skilnote1)
     return JsonResponse({
         'message': '인풋 박스 추가 성공',
-        'shortcut_id':wm.id,
-        'shortcut_title':wm.title,
-        'shortcut_content':wm.content1,
+        'shortcut_id':skilnote1.id,
+        'shortcut_title':skilnote1.title,
+        'shortcut_content':skilnote1.content1,
     })
 
 def edit_temp_skill_note_for_input(request,id):
@@ -1006,35 +1006,35 @@ def new_comment_for_my_shortcut(request, shortcut_id):
 #     ca = CategoryForSkilNote2.objects.get(id=category_id)
 #     # title = request.POST['title']
 #
-#     wm1 = MyShortCutForSkilNote2.objects.create(
+#     skilnote11 = MyShortCutForSkilNote2.objects.create(
 #         author = request.user,
 #         title="title1",
 #         type= ty,
 #         category = ca,
 #         content2 = ""
 #     )
-#     wm2 = MyShortCutForSkilNote2.objects.create(
+#     skilnote12 = MyShortCutForSkilNote2.objects.create(
 #         author = request.user,
 #         title="title2",
 #         type= ty,
 #         category = ca,
 #         content2 = ""
 #     )
-#     wm3 = MyShortCutForSkilNote2.objects.create(
+#     skilnote13 = MyShortCutForSkilNote2.objects.create(
 #         author = request.user,
 #         title="title3",
 #         type= ty,
 #         category = ca,
 #         content2 = ""
 #     )
-#     wm4 = MyShortCutForSkilNote2.objects.create(
+#     skilnote14 = MyShortCutForSkilNote2.objects.create(
 #         author = request.user,
 #         title="title4",
 #         type= ty,
 #         category = ca,
 #         content2 = ""
 #     )
-#     wm5 = MyShortCutForSkilNote2.objects.create(
+#     skilnote15 = MyShortCutForSkilNote2.objects.create(
 #         author = request.user,
 #         title="title5",
 #         type= ty,
@@ -1042,13 +1042,13 @@ def new_comment_for_my_shortcut(request, shortcut_id):
 #         content2 = ""
 #     )
 #
-#     print("wm1 : ", wm1)
+#     print("skilnote11 : ", skilnote11)
 #
 #     return JsonResponse({
 #         'message': 'textarea 박스 추가 성공',
-#         'shortcut_id':wm1.id,
-#         'shortcut_title':wm1.title,
-#         'shortcut_content2':wm1.content2,
+#         'shortcut_id':skilnote11.id,
+#         'shortcut_title':skilnote11.title,
+#         'shortcut_content2':skilnote11.content2,
 #     })
 
 # myshortcut_row, shorcut_id, shorcut_content
@@ -1059,7 +1059,7 @@ def create_new1_input(request):
     ca = CategoryForSkilNote2.objects.get(id=category_id)
     title = request.POST['title']
 
-    wm = MyShortCutForSkilNote2.objects.create(
+    skilnote1 = MyShortCutForSkilNote2.objects.create(
         author = request.user,
         title=title,
         type= ty,
@@ -1067,12 +1067,12 @@ def create_new1_input(request):
         content1 = "",
         created = datetime.now()
     )
-    print("wm : ", wm)
+    print("skilnote1 : ", skilnote1)
     return JsonResponse({
         'message': '인풋 박스 추가 성공',
-        'shortcut_id':wm.id,
-        'shortcut_title':wm.title,
-        'shortcut_content':wm.content1,
+        'shortcut_id':skilnote1.id,
+        'shortcut_title':skilnote1.title,
+        'shortcut_content':skilnote1.content1,
     })
 
 
@@ -1100,7 +1100,7 @@ def create_new1_input_between(request,current_article_id):
     ca = CategoryForSkilNote2.objects.get(id=category_id)
     title = request.POST['title']
 
-    wm = MyShortCutForSkilNote2.objects.create(
+    skilnote1 = MyShortCutForSkilNote2.objects.create(
         author = request.user,
         title=title,
         type= ty,
@@ -1108,12 +1108,12 @@ def create_new1_input_between(request,current_article_id):
         content1 = "",
         created=current_article.created+timedelta(seconds=1.5)
     )
-    print("wm : ", wm)
+    print("skilnote1 : ", skilnote1)
     return JsonResponse({
         'message': '인풋 박스 추가 성공',
-        'shortcut_id':wm.id,
-        'shortcut_title':wm.title,
-        'shortcut_content':wm.content1,
+        'shortcut_id':skilnote1.id,
+        'shortcut_title':skilnote1.title,
+        'shortcut_content':skilnote1.content1,
     })
 
 
@@ -1190,7 +1190,7 @@ def create_textarea_first(request):
         'shortcut_id':skilnote2.id,
         'shortcut_title':skilnote2.title,
         'shortcut_content2':skilnote2.content2,
-        # 'author':wm.author.username,
+        # 'author':skilnote1.author.username,
     })
 
 # summer note 첫번째에 추가 하기 2244
@@ -1250,7 +1250,7 @@ def create_new2_textarea(request):
 
     print("author : ", author)
 
-    wm = MyShortCutForSkilNote2.objects.create(
+    skilnote1 = MyShortCutForSkilNote2.objects.create(
         author = request.user,
         title=title,
         filename=file_name,
@@ -1259,13 +1259,13 @@ def create_new2_textarea(request):
         created = datetime.now(),
         content2 = ""
     )
-    print("wm : ", wm)
+    print("skilnote1 : ", skilnote1)
     return JsonResponse({
         'message': 'textarea 박스 추가 성공',
-        'shortcut_id':wm.id,
-        'shortcut_title':wm.title,
-        'shortcut_content2':wm.content2,
-        'file_name':wm.filename,
+        'shortcut_id':skilnote1.id,
+        'shortcut_title':skilnote1.title,
+        'shortcut_content2':skilnote1.content2,
+        'file_name':skilnote1.filename,
         'author':author
     })
 
@@ -1289,7 +1289,7 @@ def create_new2_textarea_between(request,current_article_id):
     ca = CategoryForSkilNote2.objects.get(id=category_id)
     title = request.POST['title']
 
-    wm = MyShortCutForSkilNote2.objects.create(
+    skilnote1 = MyShortCutForSkilNote2.objects.create(
         author = request.user,
         title=title,
         type= ty,
@@ -1297,12 +1297,12 @@ def create_new2_textarea_between(request,current_article_id):
         created=current_article.created+timedelta(seconds=1.5),
         content2 = ""
     )
-    print("wm : ", wm)
+    print("skilnote1 : ", skilnote1)
     return JsonResponse({
         'message': 'textarea 박스 추가 성공',
-        'shortcut_id':wm.id,
-        'shortcut_title':wm.title,
-        'shortcut_content2':wm.content2,
+        'shortcut_id':skilnote1.id,
+        'shortcut_title':skilnote1.title,
+        'shortcut_content2':skilnote1.content2,
     })
 
 def update_category_by_ajax(request):
@@ -1565,9 +1565,9 @@ def myfunc():
     print("myfunc 실행")
 
 
-
-# skilnote2 Note1 List 
+# 2244
 class MyShortcutListByCategory(ListView):
+
     def get_template_names(self):
         return ['skilnote2/skil_note2_list.html']
 

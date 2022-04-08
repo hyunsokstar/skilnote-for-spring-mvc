@@ -564,7 +564,7 @@ img.Image { max-width: 100%; display: block; }
 				<input type="radio" class="search" id="content_title_alluser" name='foo'>제목, 내용(all user)
 				<input type="radio" class="search" id="title_alluser" name='foo'>제목(all user)
 				<br>
-				<div id="wm_list_area_for_popup"></div>
+				<div id="_list_area_for_popup"></div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -943,8 +943,8 @@ $('body').on('click', '.file_history_button', function (e) {
 			},
 		success: function (result) {
 			// alert("result: ", result)
-			$("#wm_list_area_for_popup").html("")
-			$("#wm_list_area_for_popup").append(result)
+			$("#_list_area_for_popup").html("")
+			$("#_list_area_for_popup").append(result)
 			window.history.pushState("", "", '/skilnote2/myshortcut/')
 		}
 	});
@@ -1979,8 +1979,8 @@ $('body').on('click', '.skill_search_button', function (e) {
 			window.history.pushState("", "", '/skilnote2/myshortcut/')
 			// alert("success");
 			// alert("result: "+ result)
-			$("#wm_list_area_for_popup").html("")
-			$("#wm_list_area_for_popup").append(result)
+			$("#_list_area_for_popup").html("")
+			$("#_list_area_for_popup").append(result)
 		}
 	});
 });

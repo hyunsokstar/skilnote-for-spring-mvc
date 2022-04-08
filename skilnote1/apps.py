@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class WmConfig(AppConfig):
+class skilnote1Config(AppConfig):
     name = 'skilnote1'

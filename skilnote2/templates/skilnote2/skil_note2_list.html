@@ -104,7 +104,7 @@ img.Image { max-width: 100%; display: block; }
 
 <div class="sideicon_for_scroll">
 	<button class="new3_btn btn btn-outline-dark btn-sm" onclick="window.location.href = '{% url 'skilnote2:my_shortcut_list2' %}';">입력</button><br>
-	<button class="new3_btn btn btn-outline-dark btn-sm" onclick="window.location.href = '{% url 'wm:insert_myshortcut_textarea_summer_note' %}';">SN</button><br>
+	<button class="new3_btn btn btn-outline-dark btn-sm" onclick="window.location.href = '{% url ':insert_myshortcut_textarea_summer_note' %}';">SN</button><br>
 	<button type="button" name="button" class="new1_btn btn btn-outline-dark btn-sm" id="">인풋</button><br>
 	<button type="button" name="button" class="new2_btn btn btn-outline-dark btn-sm" id="">text</button><br>
 	<button type="button" name="button" class="before_btn btn btn-outline-info btn-sm" id="">
@@ -504,7 +504,7 @@ img.Image { max-width: 100%; display: block; }
 				<input type="radio" class="search" id="content_title_alluser" name='foo'>제목, 내용(all user)
 				<input type="radio" class="search" id="title_alluser" name='foo'>제목(all user)
 				<br>
-				<div id="wm_list_area_for_popup"></div>
+				<div id="_list_area_for_popup"></div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1808,8 +1808,8 @@ function search_note(e){
 			},
 		success: function (result) {
 			window.history.pushState("", "", '/skilnote2/myshortcut/')
-			$("#wm_list_area_for_popup").html("")
-			$("#wm_list_area_for_popup").append(result)
+			$("#_list_area_for_popup").html("")
+			$("#_list_area_for_popup").append(result)
 		}
 	});
 }
@@ -1846,8 +1846,8 @@ function search_note(e){
 // 			window.history.pushState("", "", '/skilnote2/myshortcut/')
 // 			// alert("success");
 // 			// alert("result: "+ result)
-// 			$("#wm_list_area_for_popup").html("")
-// 			$("#wm_list_area_for_popup").append(result)
+// 			$("#_list_area_for_popup").html("")
+// 			$("#_list_area_for_popup").append(result)
 // 		}
 // 	});
 // });

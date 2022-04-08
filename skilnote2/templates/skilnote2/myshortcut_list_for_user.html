@@ -697,7 +697,7 @@ SkilNote2
 				<input type="radio" class="search" id="title_alluser" name='foo'>제목(all user)
 				<br><br>
 
-				<div id="wm_list_area_for_popup"></div>
+				<div id="_list_area_for_popup"></div>
 
 			</div>
 			<div class="modal-footer">
@@ -1119,8 +1119,8 @@ $('body').on('click', '.file_history_button', function (e) {
 			},
 		success: function (result) {
 			// alert("result: ", result)
-			$("#wm_list_area_for_popup").html("")
-			$("#wm_list_area_for_popup").append(result)
+			$("#_list_area_for_popup").html("")
+			$("#_list_area_for_popup").append(result)
 			window.history.pushState("", "", '/skilnote2/myshortcut/')
 		}
 	});
@@ -2168,8 +2168,8 @@ $('body').on('click', '.skill_search_button', function (e) {
 			window.history.pushState("", "", '/skilnote2/myshortcut/')
 			// alert("success");
 			// alert("result: "+ result)
-			$("#wm_list_area_for_popup").html("")
-			$("#wm_list_area_for_popup").append(result)
+			$("#_list_area_for_popup").html("")
+			$("#_list_area_for_popup").append(result)
 		}
 	});
 });
@@ -2205,7 +2205,7 @@ $('body').on('click', '.update_nick_button', function (e) {
 	}
 	console.log("user를 수정 합니다");
 
-	// 서버로 ch_id를 보내서 wm의 CategoryNick모델의 author=request.user인 row의 필드를 업데이트
+	// 서버로 ch_id를 보내서 의 CategoryNick모델의 author=request.user인 row의 필드를 업데이트
 	window.history.pushState("", "", '/skilnote2/myshortcut/')
 
 	$.ajax({

@@ -13,13 +13,13 @@ button, input, a {
 .sideicon_for_scroll{
 	position:fixed;
 	colort:blue;
-	top:76px;
+	top:120px;
 	right:1px;;
 }
 .sideicon_for_insert{
 	position:fixed;
 	colort:blue;
-	top:60px;
+	top:80px;
 	right:1px;;
 }
 .sideicon_for_move{
@@ -30,7 +30,7 @@ button, input, a {
 }
 .temp_memo_btn_area {
 	position:fixed;
-	top:60px;
+	top:120px;
 	left:5px;
 }
 .jbFixed {
@@ -41,11 +41,20 @@ button, input, a {
 	background-color:green
 }
 img.Image { max-width: 100%; display: block; }
+
+.ca-btn,
+.ca-btn-selected 
+{
+	display:inline-block;
+	width: 50px;
+	height: 24px;
+}
+
 {% endblock %}
 
 {%block content4 %}
-<br>
-<h2 class="">MyNote1</h2>
+<br><br><br><br>
+<h2>skilnote1</h2>
 <table class="table table-bordered">
 	<tr>
 		<td width="">
@@ -74,19 +83,21 @@ img.Image { max-width: 100%; display: block; }
 		</td>
 	</tr>
 	<tr>
+
 		<td width="80%">
 			{% for category in category_list %}
 			{% ifequal category.id request.user.profile.selected_category_id %}
 			<a style="background-color:yellow" class="btn btn-outline-info btn-sm ca-btn-selected"
-				href="{{category.get_absolute_url}}" id={{category.id}}>{{ category.name }} </a>
+				href="/skilnote1/myshortcut/category/ca{{category.id}}" id={{category.id}}>{{ category.name }} </a>
 			{% else %}
 			<a class="btn btn-outline-info btn-sm ca-btn-{{category.id}} ca-btn" id=ca_{{category.id}}
-				href="{{category.get_absolute_url}}">{{ category.name }} </a>
+				href="/skilnote1/myshortcut/category/ca{{category.id}}">{{ category.name }} </a>
 			{% endifequal %}
 			{% endfor %}
 		</td>
 	</tr>
 </table>
+
 
 {% if messages %}
 <div class="alert alert-success">
@@ -96,7 +107,7 @@ img.Image { max-width: 100%; display: block; }
 </div>
 {% endif %}
 <div class="sideicon_for_scroll">
-	<button class="new3_btn btn btn-outline-dark btn-sm" onclick="window.location.href = '{% url 'skilnote1:my_shortcut_list2' %}';">입력</button><br>
+	<button class="insert-mode btn btn-outline-dark btn-sm" onclick="window.location.href = '{% url 'skilnote1:my_shortcut_list2' %}';">입력</button><br>
 	<button class="new3_btn btn btn-outline-dark btn-sm" onclick="window.location.href = '{% url 'skilnote1:insert_myshortcut_textarea_summer_note' %}';">SN</button><br>
 	<button type="button" name="button" class="new1_btn btn btn-outline-dark btn-sm" id="">인풋</button><br>
 	<button type="button" name="button" class="new2_btn btn btn-outline-dark btn-sm" id="">text</button><br>
@@ -128,7 +139,16 @@ img.Image { max-width: 100%; display: block; }
 <div class="temp_memo_btn_area">
 	<button type="button" name="button" class="temp_memo_btn btn btn-outline-dark btn-sm" id="">m1</button> <br>
 	<button type="button" name="button" class="temp_memo_for_backend_btn btn btn-outline-dark btn-sm" id="">m2</button><br>
-	<button type="button" class="btn btn-outline-dark guest_book_list_btn btn-sm">계획</button> <br>
+
+	<!-- <button type="button" class="btn btn-outline-dark guest_book_list_btn btn-sm">lecture(구현중)</button> <br> -->
+	<button type="button" class="btn btn-outline-dark lecture_list_for_user_button btn-sm">lecture</button> <br>
+
+	<!-- <button type="button" class="btn btn-outline-warning refer-note-for-user btn-sm"> 
+		참고
+	</button> <br> -->
+	
+	<button type="button" class="btn btn-outline-dark plan_btn btn-sm">Plan</button> <br>
+
 	<button type="button" class="btn btn-outline-dark btn-sm">슬랙</button><br>
 	<a href="" class="btn btn-outline-primary btn-sm" id="insert_first_for_skill_note_btn"> first</a> <br>
 	<a href="" class="btn btn-outline-primary btn-sm" id="modify_category_button"> 이동</a> <br>
@@ -141,7 +161,10 @@ img.Image { max-width: 100%; display: block; }
 		 c-1
 		 <span class="" id="loading_for_copy_minus1" role="status" aria-hidden="true"></span>
 	 </a><br>
+
 	<a href="" class="btn btn-outline-primary btn-sm" id="move_to_skilblog_btn">칼럼</a> <br>
+	<!-- <a href="" class="btn btn-outline-warning btn-sm" id="">보충 노트(구현중)</a> <br> -->
+
 </div>
 
 <table class="table table-bordered category_subject_table" width="1110" style="">
@@ -160,39 +183,6 @@ img.Image { max-width: 100%; display: block; }
 {% if object_list.exists %}
 	{% for p in object_list %}
 		<table class="table table-bordered table_row" id="todo_list">
-			<!-- {% ifequal p.type.type_name "input" %}
-				<tr id="shortcut_{{p.id}}" style="background-color:#d1e8cf;">
-					<td id=index_{{ forloop.counter }} width="10%">
-						<input type="checkbox" id="{{p.pk}}" class="shortcut_check">
-						{{ forloop.counter }}
-					</td>
-					<td id="input_title_for_skill_note_btn">
-						<span id=title_{{p.id}}>
-							{{p.title}}
-						</span>
-						<span id="title-area-{{p.id}}" style="color: red;">&nbsp;&nbsp;<span>
-						{% if p.author == request.user %}
-							<button class="badge badge-pill badge-primary short_delete_button float-right" id="{{p.id}}">삭제</button>
-							<button class="badge badge-pill badge-primary short_update_button float-right" id="{{p.id}}">제목 수정</button>
-						{% endif %}
-					</td>
-				</tr>
-
-				<tr id="shortcut_{{p.id}}-2" style="background-color:#fcfaeb">
-					<td colspan="2">
-
-						<input type="text" name="" value="{{p.content1}}" size="40" id="select-input-{{p.id}}" class="form-control">
-							<button class="btn btn-outline-danger btn-sm myinput float-right copy_code1" id="{{p.id}}" data-num = {{ forloop.counter }}>copy</button>
-							<button class="btn btn-outline-danger btn-sm float-right shortcut_edit_button1" id="{{p.id}}">edit_complete</button>
-							<button class="btn btn-outline-danger btn-sm shortcut_comment_button" id="{{p.id}}">댓글</button>
-							<button class="btn btn-outline-danger btn-sm shortcut_between_button_sn" id="{{p.id}}">sn</button>
-							<button class="btn btn-outline-danger btn-sm shortcut_between_button_input" id="{{p.id}}">ip</button>
-							<button class="btn btn-outline-danger btn-sm shortcut_between_button_textarea" id="{{p.id}}">ta</button>
-							<button class="btn btn-outline-danger btn-sm input_beteween_image_for_skill_note_btn" id="{{p.id}}">pi</button>
-
-					</td>
-				</tr>
-			{% endifequal %} -->
 
 			{% ifequal p.type.type_name "textarea" %}
 					<tr id="shortcut_{{p.id}}" style="background-color:#d1e8cf; max-width:100%;">
@@ -495,7 +485,7 @@ img.Image { max-width: 100%; display: block; }
 				<input type="radio" class="search" id="content_title_alluser" name='foo'>제목, 내용(all user)
 				<input type="radio" class="search" id="title_alluser" name='foo'>제목(all user)
 				<br>
-				<div id="skinote1_list_area_for_popup"></div>
+				<div id="skilnote1_list_area_for_popup"></div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -571,6 +561,25 @@ img.Image { max-width: 100%; display: block; }
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body" id="guest_list_table_area">
+				<!-- 내용 출력 부분 -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- plan modal -->
+<div class="modal fade" id="plan-modal" role="dialog">
+	<div class="modal-dialog modal-xl">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">plan</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			</div>
+			<div class="modal-body" id="plan_list_table_area">
 				<!-- 내용 출력 부분 -->
 			</div>
 			<div class="modal-footer">
@@ -719,19 +728,51 @@ $(function() {
     if (e.ctrlKey && e.which === 39) {
 	  $(".go_to_next_channer_btn").trigger("click");
     }
-	if (e.altKey && e.which === 49) {
-	  $(".new3_btn").trigger("click");
-    }
-	if (e.altKey && e.which === 50) {
-	  $(".new1_btn").trigger("click");
-	}
-	if (e.altKey && e.which === 51) {
-	  $(".new2_btn").trigger("click");
-	}
+
 	if (e.altKey && e.which === 52) {
 	  $(".insert_image").trigger("click");
 	}
+
+	// alt + 2 : 인서트 모드
+	if (e.altKey && e.which === 50) {
+		console.log("리드 모드");
+	  $(".insert-mode").trigger("click");
+    }	
+
+	if (e.ctrlKey && e.which === 38) {
+	  $(".before_btn").trigger("click");
+	}
+
+	if (e.ctrlKey && e.which === 40) {
+	  $(".next_btn").trigger("click");
+	}
   })
+});
+
+// refer-note-for-user
+$('body').on('click', '.refer-note-for-user', function (e) {
+	alert("참고 노트 클릭")
+});
+
+$('body').on('click', '.plan_btn ', function (e) {
+	// alert("plan button 클릭")
+	// $("#plan-modal").modal();
+
+    const url = "/myshortcut/plan_list_for_user/{{request.user}}"
+
+    $.get(url)
+        .done((result) => {
+            $("#plan_list_table_area").html(result)
+            $("#plan-modal").modal();
+
+        })
+        .fail(() => {
+            console.log("fail");
+        })
+        .always(() => {
+            console.log('always');
+    })
+
 });
 
 $('body').on('click', '#change_user_id_to_me', function (e) {
@@ -741,9 +782,8 @@ $('body').on('click', '#change_user_id_to_me', function (e) {
 	$(".update_shortcut_user_id").trigger("click");
 });
 
-$('body').on('click', '.guest_book_list_btn', function (e) {
-	const url = "guest_book_list/{{request.user}}"
-	window.history.pushState("", "", '/skilnote1/myshortcut/')
+$('body').on('click', '.lecture_list_for_user_button', function (e) {
+	const url = "/skilnote1/myshortcut/lecture_list_for_user"
 
 	$.get(url)
 		.done((result) => {
@@ -894,7 +934,7 @@ function copy_for_file_name(id){
         how: 'append'
     });
 
-	if(copyText.value.indexOf("http://") != -1 || copyText.value.indexOf("https://") != -1) {
+	if(copyText.value.indexOf("http://") != -1) {
 		var r = confirm("주소로 새창을 띄우시겠습니까?");
 		if (r == true) {
 			console.log("새탭 열기")
@@ -1761,8 +1801,8 @@ function search_note(e){
 			},
 		success: function (result) {
 			window.history.pushState("", "", '/skilnote1/myshortcut/')
-			$("#skinote1_list_area_for_popup").html("")
-			$("#skinote1_list_area_for_popup").append(result)
+			$("#skilnote1_list_area_for_popup").html("")
+			$("#skilnote1_list_area_for_popup").append(result)
 		}
 	});
 }
