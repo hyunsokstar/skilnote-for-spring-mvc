@@ -4,7 +4,6 @@
 
         <button type="button" class="btn btn-outline-primary insert_btn_for_guset_book_list" style="float: right;">계획 쓰기</button>
 
-
         <table class="table table-bordered" id="todo_list" width="100%">
             <tr>
                 <td>id</td>
@@ -20,7 +19,8 @@
                 <td>{{guest_book.id}}</td>
                 <td id=author_{{guest_book.id}}>{{guest_book.author}}</td>
                 <td>
-                    <input type="text" class=""  size="100%" value={{guest_book.content}}>
+                    12
+                    <input type="text" class=""  size="100%" value="{{guest_book.content}}">
                 </td>
                 <td>
                     {{guest_book.created_at}}
