@@ -20,7 +20,7 @@ button, input, a {
 .sideicon_for_insert{
 	position:fixed;
 	colort:blue;
-	top:60px;
+	top:80px;
 	right:16px;
 }
 .sideicon_for_move{
@@ -31,7 +31,7 @@ button, input, a {
 }
 .temp_memo_btn_area {
 	position:fixed;
-	top:60px;
+	top:80px;
 	left:5px;
 }
 .jbFixed {
@@ -505,7 +505,7 @@ img.Image { max-width: 100%; display: block; }
 				<input type="radio" class="search" id="content_title_alluser" name='foo'>제목, 내용(all user)
 				<input type="radio" class="search" id="title_alluser" name='foo'>제목(all user)
 				<br>
-				<div id="_list_area_for_popup"></div>
+				<div id="skilnote1_list_area_for_popup"></div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1787,8 +1787,8 @@ function search_note(e){
 			},
 		success: function (result) {
 			window.history.pushState("", "", '/skilnote4/myshortcut/')
-			$("#_list_area_for_popup").html("")
-			$("#_list_area_for_popup").append(result)
+			$("#skilnote1_list_area_for_popup").html("")
+			$("#skilnote1_list_area_for_popup").append(result)
 		}
 	});
 }
@@ -1825,8 +1825,8 @@ function search_note(e){
 // 			window.history.pushState("", "", '/skilnote4/myshortcut/')
 // 			// alert("success");
 // 			// alert("result: "+ result)
-// 			$("#_list_area_for_popup").html("")
-// 			$("#_list_area_for_popup").append(result)
+// 			$("#skilnote1_list_area_for_popup").html("")
+// 			$("#skilnote1_list_area_for_popup").append(result)
 // 		}
 // 	});
 // });

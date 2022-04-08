@@ -36,7 +36,7 @@ button, input, a {
 
 .temp_memo_btn_area {
 	position:fixed;
-	top:60px;
+	top:80px;
 	left:5px;
 }
 
@@ -942,8 +942,8 @@ $('body').on('click', '.file_history_button', function (e) {
 			},
 		success: function (result) {
 			// alert("result: ", result)
-			$("#_list_area_for_popup").html("")
-			$("#_list_area_for_popup").append(result)
+			$("#skilnote1_list_area_for_popup").html("")
+			$("#skilnote1_list_area_for_popup").append(result)
 			window.history.pushState("", "", '/skilnote3/myshortcut/')
 		}
 	});
@@ -1949,8 +1949,8 @@ $('body').on('click', '.skill_search_button', function (e) {
 			window.history.pushState("", "", '/skilnote3/myshortcut/')
 			// alert("success");
 			// alert("result: "+ result)
-			$("#_list_area_for_popup").html("")
-			$("#_list_area_for_popup").append(result)
+			$("#skilnote1_list_area_for_popup").html("")
+			$("#skilnote1_list_area_for_popup").append(result)
 		}
 	});
 });

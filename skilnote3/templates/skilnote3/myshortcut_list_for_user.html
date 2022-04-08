@@ -25,7 +25,7 @@ button, input, a {
 .sideicon_for_insert{
 	position:fixed;
 	colort:blue;
-	top:60px;
+	top:80px;
 	right:16px;
 }
 
@@ -38,7 +38,7 @@ button, input, a {
 
 .temp_memo_btn_area {
 	position:fixed;
-	top:60px;
+	top:80px;
 	left:5px;
 }
 
@@ -700,7 +700,7 @@ SkilNote3
 				<input type="radio" class="search" id="title_alluser" name='foo'>제목(all user)
 				<br><br>
 
-				<div id="_list_area_for_popup"></div>
+				<div id="skilnote1_list_area_for_popup"></div>
 
 			</div>
 			<div class="modal-footer">
@@ -1122,8 +1122,8 @@ $('body').on('click', '.file_history_button', function (e) {
 			},
 		success: function (result) {
 			// alert("result: ", result)
-			$("#_list_area_for_popup").html("")
-			$("#_list_area_for_popup").append(result)
+			$("#skilnote1_list_area_for_popup").html("")
+			$("#skilnote1_list_area_for_popup").append(result)
 			window.history.pushState("", "", '/skilnote3/myshortcut/')
 		}
 	});
@@ -2171,8 +2171,8 @@ $('body').on('click', '.skill_search_button', function (e) {
 			window.history.pushState("", "", '/skilnote3/myshortcut/')
 			// alert("success");
 			// alert("result: "+ result)
-			$("#_list_area_for_popup").html("")
-			$("#_list_area_for_popup").append(result)
+			$("#skilnote1_list_area_for_popup").html("")
+			$("#skilnote1_list_area_for_popup").append(result)
 		}
 	});
 });
@@ -2196,8 +2196,8 @@ $('body').on('click', '.update_nick_button', function (e) {
 		return;
 	}
 
-	var note_author = $("#shortcut_user_id").val().trim()
-	var current_user = $(this).data("user_id").trim();
+	var note_author = $("#shortcut_user_id").val()
+	var current_user = $(this).data("user_id")
 
 	console.log("note_author : ", note_author);
 	console.log("current_user : ",current_user);
@@ -2208,7 +2208,7 @@ $('body').on('click', '.update_nick_button', function (e) {
 	}
 	console.log("user를 수정 합니다");
 
-	// 서버로 ch_id를 보내서 의 CategoryNick모델의 author=request.user인 row의 필드를 업데이트
+	// 서버로 ch_id를 보내서 skilnote1의 CategoryNick모델의 author=request.user인 row의 필드를 업데이트
 	window.history.pushState("", "", '/skilnote3/myshortcut/')
 
 	$.ajax({
