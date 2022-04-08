@@ -1755,7 +1755,8 @@ class user_list_for_memo_view(ListView):
         else:
             print(
                 "user list 출력 확인 ===========================================================")
-            object_list = User.objects.all().filter(profile__public="True").order_by('-profile__skill_note_reputation')
+            # object_list = User.objects.all().filter(profile__public="True").order_by('-profile__skill_note_reputation')
+            object_list = User.objects.all().order_by('-profile__skill_note_reputation')
             print("result : ", object_list)
             return object_list
 

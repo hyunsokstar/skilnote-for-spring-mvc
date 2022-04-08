@@ -5,14 +5,14 @@
 
 {% block content %}
 
-<br>
+<br><br>
 
 <div class="container mt-1">
   <div class="row">
     <div class="col">
       <span>
           <h4>
-              <a href="{% url 'skilnote1:skil_note_list_by_user' profile_user 1 %}">{{profile_user}}</a>'s User Profile
+              <a href="{% url 'wm:skil_note_list_by_user' profile_user 1 %}">{{profile_user}}</a>'s User Profile
           </h4>
       </span>
 
@@ -66,7 +66,7 @@
         <td width="20%">user_name</td>
         <td>
             <h4>
-                <a href="{% url 'skilnote1:skil_note_list_by_user' profile_user 1 %}">{{profile_user}}</a>
+                <a href="{% url 'wm:skil_note_list_by_user' profile_user 1 %}">{{profile_user}}</a>
             </h4>
         </td>
     </tr>
